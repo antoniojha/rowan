@@ -1,0 +1,67 @@
+
+<h1>Weather App</h1>
+
+<form ng-submit="getData()">
+  <p>City Name</p>
+  <p><input type="text" ng-model="city_name"></p>
+  <p>Country Code</p>
+  <p><input type="text" ng-model="country_code"></p>
+  <p><input type="submit" value="Submit"></p>
+</form> 
+<table style="width:70%;text-align:center;">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>
+        <a ng-href='#' ng-click="sortType='morn'; sortReverse = !sortReverse" >Morning
+
+          <span ng-show="sortType == 'morn' && !sortReverse" class="dropup">
+            <span class="caret"></span>
+          </span>
+          <span ng-show="sortType == 'morn' && sortReverse" class="dropdown">
+            <span class="caret"></span>
+          </span>
+        </a>
+      </th>
+      <th>
+        <a ng-href='#' ng-click="sortType='day'; sortReverse = !sortReverse">Day
+          <span ng-show="sortType == 'day' && !sortReverse" class="dropup">
+            <span class="caret"></span>
+          </span>
+          <span ng-show="sortType == 'day' && sortReverse" class="dropdown">
+            <span class="caret"></span>
+          </span>
+        </a>
+      </th>
+      <th>
+        <a ng-href='#' ng-click="sortType='eve'; sortReverse = !sortReverse" >Eve
+          <span ng-show="sortType == 'eve' && !sortReverse" class="dropup">
+            <span class="caret"></span>
+          </span>
+          <span ng-show="sortType == 'eve' && sortReverse" class="dropdown">
+            <span class="caret"></span>
+          </span>
+        </a>
+      </th>
+      <th>
+        <a ng-href='#' ng-click="sortType='night'; sortReverse = !sortReverse" >Night
+          <span ng-show="sortType == 'night' && !sortReverse" class="dropup">
+            <span class="caret"></span>
+          </span>
+          <span ng-show="sortType == 'night' && sortReverse" class="dropdown">
+            <span class="caret"></span>
+          </span>
+        </a>
+      </th>
+    </tr>
+  </thead>
+
+  <tr ng-repeat="weather in weatherList| orderBy:sortType:sortReverse">    
+    <td>{{"Day"}} {{weather.date}}</td>
+    <td>{{weather.morn}} {{"F"}}</td>
+    <td>{{weather.day}} {{"F"}}</td>
+    <td>{{weather.eve}} {{"F"}}</td>
+    <td>{{weather.night}} {{"F"}}</td>
+  </tr>
+</table>
+
